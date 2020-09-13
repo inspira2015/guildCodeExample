@@ -17,4 +17,12 @@ class LoanApplicationBorrowers extends Model
      * @var boolean
      */
     public $timestamps = true;
+
+    public function scopeGetBorrowersByLoanApplicationId($query, $loanApplicationId)
+    {
+        return $query->select(['*'])
+                     ->where('loan_application_id', '=', $loanApplicationId)
+                     ->get();
+    }
+
 }
